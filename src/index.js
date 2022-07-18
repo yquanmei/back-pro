@@ -7,7 +7,15 @@
  * @Description:
  * Copyright (c) 2022 by 用户/公司名, All Rights Reserved.
  */
-import { say } from "./a";
-document.body.innerHTML = say("tom");
 
-// console.log("good project");
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const App = () => {
+  return <div>app</div>
+}
+const root = document.getElementById('root');
+
+ReactDOM.createRoot(root).render(<App />)
+
+
