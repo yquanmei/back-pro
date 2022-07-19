@@ -14,6 +14,53 @@ module.exports = {
   entry: {
     index: "./src/index.js",
   },
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              cacheDirectory: true,
+              cacheCompression: false,
+            },
+          },
+          "ts-loader",
+        ],
+      },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              plugins: [
+                // "@babel/plugin-syntax-jsx",
+                "@babel/plugin-transform-react-jsx",
+              ],
+              cacheDirectory: true,
+              cacheCompression: false,
+            },
+          },
+          {
+            loader: "thread-loader",
+            options: {
+              workerParallelJobs: 2,
+            },
+          },
+        ],
+      },
+    ],
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "../src"),
+    },
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",

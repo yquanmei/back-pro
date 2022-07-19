@@ -8,14 +8,9 @@
  * Copyright (c) 2022 by 用户/公司名, All Rights Reserved.
  */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
 
-const App = () => {
-  return <div>app</div>
-}
-const root = document.getElementById('root');
-
-ReactDOM.createRoot(root).render(<App />)
-
-
+const root = document.getElementById("root");
+ReactDOM.createRoot(root).render(<App />);
