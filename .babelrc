@@ -1,0 +1,25 @@
+{
+  "presets": [
+    [
+      // 预设polyfill
+      "@babel/preset-env",
+      {
+        // polyfill 只加载使用的部分
+        "useBuiltIns": "usage",
+        // 使用corejs解析，模块化
+        "corejs": "3"
+      }
+    ],
+    [
+      // 预设polyfill
+      "@babel/preset-react",
+      {
+        // polyfill 只加载使用的部分
+        "runtime": "automatic"
+      }
+    ]
+  ],
+  "plugins": [
+    "@babel/plugin-transform-runtime"
+  ]
+}

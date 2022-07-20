@@ -9,6 +9,7 @@
  */
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const isProd = process.env.NODE_ENV === "prod";
 
 module.exports = {
   entry: {
@@ -27,7 +28,12 @@ module.exports = {
               cacheCompression: false,
             },
           },
-          "ts-loader",
+          {
+            loader: "ts-loader",
+            options: {
+              transpileOnly: true, // 只做语言转换，而不做类型检查
+            },
+          },
         ],
       },
       {
@@ -52,6 +58,37 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.(css|less)$/,
+        exclude: /node_modules/,
+        use: [
+          // 生产环境下直接分离打包css
+          isProd ? MiniCssExtractPlugin.loader : "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName: isProd
+                  ? "[hash:base64]"
+                  : "[path][name]__[local]",
+              },
+            },
+          },
+          "postcss-loader",
+          "less-loader",
+          {
+            loader: "thread-loader",
+            options: {
+              workerParallelJobs: 2,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(css|less)$/,
+        use: ["style-loader", "css-loader", "postcss-loader", "less-loader"],
+        include: /node_modules/,
       },
     ],
   },
