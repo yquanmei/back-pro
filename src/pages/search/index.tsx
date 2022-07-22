@@ -8,6 +8,8 @@
  * Copyright (c) 2022 by 用户/公司名, All Rights Reserved.
  */
 import React from "react";
+import "./index.less";
+// import { Button } from "antd";
 import { Tabs } from "antd-mobile";
 // import { DemoBlock } from "demos";
 // import { AppstoreOutline } from "antd-mobile-icons";
@@ -41,4 +43,8 @@ export default () => {
 
 // export default () => {
 //   return <div>测试一下吧</div>;
+// };
+
+// export default () => {
+//   return <Button type="primary">测试一下吧</Button>;
 // };

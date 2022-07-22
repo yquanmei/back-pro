@@ -9,7 +9,13 @@
  */
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const isProd = process.env.NODE_ENV === "prod";
+const fs = require("fs");
+const lessToJs = require("less-vars-to-js");
+const theme = lessToJs(
+  fs.readFileSync(path.join(__dirname, "../src/styles/theme.less"), "utf8")
+);
 
 module.exports = {
   entry: {
@@ -62,9 +68,12 @@ module.exports = {
       {
         test: /\.(css|less)$/,
         exclude: /node_modules/,
+        // include: [],
         use: [
           // 生产环境下直接分离打包css
-          isProd ? MiniCssExtractPlugin.loader : "style-loader",
+          // isProd ? MiniCssExtractPlugin.loader : "style-loader",
+          MiniCssExtractPlugin.loader,
+          // "style-loader",
           {
             loader: "css-loader",
             options: {
@@ -77,6 +86,14 @@ module.exports = {
           },
           "postcss-loader",
           "less-loader",
+          // {
+          //   loader: "less-loader",
+          //   options: {
+          //     lessOptions: {
+          //       javascriptEnabled: true,
+          //     },
+          //   },
+          // },
           {
             loader: "thread-loader",
             options: {
@@ -87,7 +104,21 @@ module.exports = {
       },
       {
         test: /\.(css|less)$/,
-        use: ["style-loader", "css-loader", "postcss-loader", "less-loader"],
+        use: [
+          "style-loader",
+          "css-loader",
+          "postcss-loader",
+          "less-loader",
+          // {
+          //   loader: "less-loader",
+          //   options: {
+          //     lessOptions: {
+          //       javascriptEnabled: true,
+          //       modifyVars: theme,
+          //     },
+          //   },
+          // },
+        ],
         include: /node_modules/,
       },
     ],
@@ -102,6 +133,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
+    new MiniCssExtractPlugin(),
   ],
   output: {
     path: path.resolve(__dirname, "../dist"),
