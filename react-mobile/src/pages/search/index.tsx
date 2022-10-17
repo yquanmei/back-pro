@@ -2,12 +2,12 @@
  * @Author: yquanmei
  * @Date: 2022-07
  * @LastEditors: yquanmei
- * @LastEditTime: 2022-07
+ * @LastEditTime: 2022-09
  * @FilePath: /cli-pro/src/pages/search/index.tsx
  * @Description:
  * Copyright (c) 2022 by 用户/公司名, All Rights Reserved.
  */
-import React from "react";
+// import React from "react";
 import "./index.less";
 // import { Button } from "antd";
 import { Tabs } from "antd-mobile";
