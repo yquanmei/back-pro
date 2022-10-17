@@ -7,5 +7,7 @@
  * @Description: 
  * Copyright (c) 2022 by 用户/公司名, All Rights Reserved. 
 -->
-|-- react-mobile // react的移动端
+
+# 脚手架项目
+|-- react-mobile // react的移动端  
 |-- react-pc // react的pc端
