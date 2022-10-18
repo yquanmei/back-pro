@@ -2,8 +2,8 @@
  * @Author: yquanmei
  * @Date: 2022-07
  * @LastEditors: yquanmei
- * @LastEditTime: 2022-07
- * @FilePath: /cli-pro/config/webpack.config.js
+ * @LastEditTime: 2022-10
+ * @FilePath: /cli-pro/react-mobile/config/webpack.config.js
  * @Description:
  * Copyright (c) 2022 by 用户/公司名, All Rights Reserved.
  */
@@ -49,10 +49,6 @@ module.exports = {
           {
             loader: "babel-loader",
             options: {
-              plugins: [
-                // "@babel/plugin-syntax-jsx",
-                "@babel/plugin-transform-react-jsx",
-              ],
               cacheDirectory: true,
               cacheCompression: false,
             },

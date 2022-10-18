@@ -9,5 +9,5 @@
 -->
 
 # 脚手架项目
-|-- react-mobile // react的移动端  
-|-- react-pc // react的pc端
+|-- react-mobile // react的移动端h5项目模板（webpack 从0 开始搭建）  
+|-- react-pc // react的pc端（webpack 从0 开始搭建）
